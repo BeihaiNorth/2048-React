@@ -1,0 +1,165 @@
+@font-face {
+  font-family: "Clear Sans";
+  src: url('clear-sans.ttf') format('truetype');
+}
+
+body {
+  font-family: "Clear Sans", sans-serif;
+  color: #776e65;
+  background-color: #FBF8EF;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
+  background-color: #EBC42C;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 37px;
+  /*float: left;*/
+}
+
+.logo>h1 {
+  padding-top: 25%;
+}
+
+
+.score div {
+  height: 75px;
+  width: 130px;
+  background-color: #bbada0;
+  float: right;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.score div h1 {
+  text-align: center;
+  font-size: 31px;
+  margin-top: 0px;
+}
+
+/*score title*/
+.score div h2 {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.restartBtn {
+  float: right;
+  height: 50px;
+  width: 270px;
+  background-color: #776e65;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 75px;
+}
+
+p {
+  font-size: 15px;
+}
+
+.game {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 100px;
+}
+
+.game-board {
+  position: relative;
+  background-color: #bbada0;
+  width: 500px;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.lost {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(251, 248, 239, 0.6);
+  text-align: center;
+  padding-top: 50px;
+}
+.lost>h3 {
+  font-size: 60px;
+  margin-bottom: 0px;
+}
+.lost>p {
+  font-size: 40px;
+  font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+.tryagainBtn {
+  height: 50px;
+  width: 200px;
+  background-color: #776e65;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
+  margin-top: 20px;
+}
+
+.cell {
+  background:rgba(238, 228, 218, 0.35);
+  width: 106.25px;
+  height: 106.25px;
+  float: left;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 3px;
+}
+
+.tile {
+  width: 106.25px;
+  height: 89.25px;
+  background-color: #EEE4DB;
+  border-radius: 3px;
+  text-align: center;
+  clear: left;
+  font-size: 55px;
+  padding-top: 17px;
+}
+
+.tile-2   {  background-color: #EEE4DB;}
+.tile-4   {  background-color: #ECE0C9;}
+.tile-8   {  background-color: #F1B080; color: #f9f6f2;}
+.tile-16  {  background-color: #EA8D5B; color: #f9f6f2;}
+.tile-32  {  background-color: #F37C63; color: #f9f6f2;}
+.tile-64  {  background-color: #f65e3b; color: #f9f6f2;}
+.tile-128 {  background-color: #edcf72; color: #f9f6f2;}
+.tile-256 {  background-color: #F0D057; color: #f9f6f2; font-size: 45px;}
+.tile-512 {  background-color: #f2b179; color: #f9f6f2;}
+.tile-1024{  background-color: #f2b179; color: #f9f6f2;}
+.tile-2048{  background-color: #EBC42C; color: #f9f6f2;}
+
+.position-1-1 {  position: absolute; left: 15px;      top: 15px;}
+.position-1-2 {  position: absolute; left: 136.25px;  top: 15px;}
+.position-1-3 {  position: absolute; left: 257.5px;   top: 15px;}
+.position-1-4 {  position: absolute; left: 378.75px;  top: 15px;}
+
+.position-2-1 {  position: absolute; left: 15px;      top: 136.25px;}
+.position-2-2 {  position: absolute; left: 136.25px;  top: 136.25px;}
+.position-2-3 {  position: absolute; left: 257.5px;   top: 136.25px;}
+.position-2-4 {  position: absolute; left: 378.75px;  top: 136.25px;}
+
+.position-3-1 {  position: absolute; left: 15px;      top: 257.5px;}
+.position-3-2 {  position: absolute; left: 136.25px;  top: 257.5px;}
+.position-3-3 {  position: absolute; left: 257.5px;   top: 257.5px;}
+.position-3-4 {  position: absolute; left: 378.75px;  top: 257.5px;}
+
+.position-4-1 {  position: absolute; left: 15px;      top: 378.75px;}
+.position-4-2 {  position: absolute; left: 136.25px;  top: 378.75px;}
+.position-4-3 {  position: absolute; left: 257.5px;   top: 378.75px;}
+.position-4-4 {  position: absolute; left: 378.75px;  top: 378.75px;}
+
