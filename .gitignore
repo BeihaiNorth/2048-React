@@ -1,2 +1,5 @@
-#vscode debug tool
+#vscode chrome debug tool
 .vscode
+
+#mac file
+*.DS_Store
