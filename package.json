@@ -1,6 +1,17 @@
 {
-  "name": "2048",
+  "name": "2048-React",
   "version": "0.1.0",
+  "author": {
+    "name": "Liujun Xue",
+    "email": "xue.liu@husky.neu.edu",
+    "url": "https://beihainorth.github.io/"
+  },
+  "description": "A simple 2048 game based on React",
+  "keywords": ["javascript","react","2048"],
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/BeihaiNorth/2048-React.git"
+	},
   "private": true,
   "dependencies": {
     "react": "^15.6.0",
