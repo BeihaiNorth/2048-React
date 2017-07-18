@@ -4,7 +4,7 @@ An implementation of 2048 bootstrapped with [Create React App](https://github.co
 
 This project is a clone of [2048](https://github.com/gabrielecirulli/2048) by [Gabriele Cirulli](https://github.com/gabrielecirulli).
 
-![2048demo](/Users/leslie/Desktop/2048demo.gif)
+![2048demo](https://github.com/BeihaiNorth/2048-React/blob/master/2048demo.gif)
 
 
 
