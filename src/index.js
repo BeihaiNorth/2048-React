@@ -13,7 +13,7 @@ class TileView extends React.Component {
 		let classnames = classArray.join(' ');
 		return (
 			<div className={classnames}>
-				{this.props.value}
+				<p>{this.props.value}</p>
 			</div>
 		);
 	}

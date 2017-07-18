@@ -17,7 +17,6 @@ body {
   border-radius: 8px;
   text-align: center;
   font-size: 37px;
-  /*float: left;*/
 }
 
 .logo>h1 {
@@ -61,7 +60,7 @@ body {
   margin-top: 75px;
 }
 
-.game p {
+.game>p {
   font-size: 21px;
 }
 
@@ -134,26 +133,36 @@ footer>p {
 
 .tile {
   width: 106.25px;
-  height: 89.25px;
+  height:106.25px;
   background-color: #EEE4DB;
   border-radius: 3px;
   text-align: center;
   clear: left;
-  font-size: 55px;
-  padding-top: 17px;
 }
 
-.tile-2   {  background-color: #EEE4DB;}
-.tile-4   {  background-color: #ECE0C9;}
-.tile-8   {  background-color: #F1B080; color: #f9f6f2;}
-.tile-16  {  background-color: #EA8D5B; color: #f9f6f2;}
-.tile-32  {  background-color: #F37C63; color: #f9f6f2;}
-.tile-64  {  background-color: #f65e3b; color: #f9f6f2;}
-.tile-128 {  background-color: #edcf72; color: #f9f6f2;}
-.tile-256 {  background-color: #F0D057; color: #f9f6f2; font-size: 45px;}
-.tile-512 {  background-color: #f2b179; color: #f9f6f2;}
-.tile-1024{  background-color: #f2b179; color: #f9f6f2;}
-.tile-2048{  background-color: #EBC42C; color: #f9f6f2;}
+.tile-2>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-4>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-8>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-16>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-32>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-64>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
+.tile-128>p { margin-top: 17px; margin-bottom: 0px; margin-right:5px; font-size: 51px;}
+.tile-256>p { margin-top: 17px; margin-bottom: 0px; margin-right:4px; font-size: 51px;}
+.tile-512>p { margin-top: 17px; margin-bottom: 0px; margin-right:5px; font-size: 51px;}
+.tile-1024>p { margin-top: 25px; margin-bottom: 0px; margin-right:5px; font-size: 40px;}
+.tile-2048>p { margin-top: 25px; margin-bottom: 0px; margin-right:5px; font-size: 40px;}
+
+.tile-2   {  background-color: #EEE4DB; }
+.tile-4   {  background-color: #ECE0C9; }
+.tile-8   {  background-color: #F1B080; color: #f9f6f2; ;}
+.tile-16  {  background-color: #EA8D5B; color: #f9f6f2; }
+.tile-32  {  background-color: #F37C63; color: #f9f6f2; }
+.tile-64  {  background-color: #f65e3b; color: #f9f6f2; }
+.tile-128 {  background-color: #edcf72; color: #f9f6f2; }
+.tile-256 {  background-color: #F0D057; color: #f9f6f2; }
+.tile-512 {  background-color: #E3C03C; color: #f9f6f2; }
+.tile-1024{  background-color: #E1B92F; color: #f9f6f2; }
+.tile-2048{  background-color: #DFB52C; color: #f9f6f2; }
 
 .position-1-1 {  position: absolute; left: 15px;      top: 15px;}
 .position-1-2 {  position: absolute; left: 136.25px;  top: 15px;}
