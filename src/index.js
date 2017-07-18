@@ -70,7 +70,7 @@ class BoardView extends React.Component {
 				<ScoreView score={this.state.board.score} bestscore={this.state.bestscore}/>
 				<button className='restartBtn' type='button' onClick={this.restartGame.bind(this)}>Restart</button>
 				<div className='logo'><h1>2048</h1></div>
-				<p>Welcome! Use the <b>arrow keys</b> to move the tiles and get a <b>2048</b>!</p>
+				<p>Use the <b>arrow keys</b> to move the tiles and get a <b>2048</b>!</p>
 				<div className='game-board'>
 					<div className='board-row'>
 						<div className='cell'></div>
@@ -121,7 +121,13 @@ function Restart(props) {
 class Game extends React.Component {
 	render(){
 		return(
-			<BoardView />
+			<div>
+				<BoardView />
+				<footer>
+					<p>Created by <b><i>Liujun Xue</i></b></p>
+					<p>Source code: <i>git clone https://github.com/BeihaiNorth/2048-React.git</i></p>
+				</footer>
+			</div>
 		);
 	}
 }

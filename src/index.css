@@ -61,8 +61,8 @@ body {
   margin-top: 75px;
 }
 
-p {
-  font-size: 15px;
+.game p {
+  font-size: 21px;
 }
 
 .game {
@@ -70,7 +70,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 
 .game-board {
@@ -81,16 +81,28 @@ p {
   border-radius: 5px;
 }
 
+footer {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+footer>p {
+  font-size:15px;
+  margin-top: 0px;
+  margin-bottom:2px;
+}
+
 .lost {
   position: absolute;
   width: 500px;
   height: 500px;
   background-color: rgba(251, 248, 239, 0.6);
   text-align: center;
-  padding-top: 50px;
 }
 .lost>h3 {
   font-size: 60px;
+  margin-top: 120px;
   margin-bottom: 0px;
 }
 .lost>p {
