@@ -10,6 +10,9 @@ class TileView extends React.Component {
 		let classArray = ['tile'];
 		classArray.push('position-'+this.props.positionR+'-'+this.props.positionC);
 		classArray.push('tile-'+this.props.value);
+		if (this.props.isNew === true) {
+			classArray.push('new-tile');
+		}
 		let classnames = classArray.join(' ');
 		return (
 			<div className={classnames}>
@@ -61,7 +64,7 @@ class BoardView extends React.Component {
 	render(){
 		let tiles = this.state.board.tiles
 					.filter(tile => tile.value !==0)
-					.map(tile => <TileView value={tile.value} key={tile.id} positionR={tile.row} positionC={tile.column} />);
+					.map(tile => <TileView value={tile.value} key={tile.id} positionR={tile.row} positionC={tile.column} isNew={tile.isNew}/>);
 		if(this.state.board.score > this.state.bestscore){
 			this.setState({bestscore: this.state.board.score});
 		}

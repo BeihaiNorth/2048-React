@@ -178,6 +178,9 @@ class Tile {
         this.value = value || 0;
         this.row = row || -1;
         this.column = column || -1;
+        this.oldrow = row;
+        this.oldcolumn = column;
+        this.isNew = true;
         this.toBeDeleted = false;
     }
 }

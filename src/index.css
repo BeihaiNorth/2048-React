@@ -140,6 +140,23 @@ footer>p {
   clear: left;
 }
 
+/* CSS animation for new tile showing up  */
+@keyframes shownew { 0%   {opacity: 0 }}
+@-webkit-keyframes shownew { 0%   {opacity: 0 }}   /* Safari and Chrome: */
+@-moz-keyframes shownew { 0%   {opacity: 0 }}      /* Firefox: */
+@-o-keyframes shownew { 0%   {opacity: 0 }}        /* Opera: */ 
+
+.new-tile
+{
+animation: shownew 0.4s linear 1;
+/* Firefox: */
+-moz-animation: shownew 0.4s linear 1;
+/* Safari 和 Chrome: */
+-webkit-animation: shownew 0.4s linear 1;
+/* Opera: */
+-o-animation: shownew 0.4s linear 1;
+}
+
 .tile-2>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
 .tile-4>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
 .tile-8>p { margin-top: 13px; margin-bottom: 0px; font-size: 60px;}
