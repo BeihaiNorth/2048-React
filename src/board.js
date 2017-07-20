@@ -66,7 +66,6 @@ class Board {
         return newArr;
     }
 
-
     moveLeft(newTiles) {
         let rowIndex = 0;
         for (let row of newTiles) { 
@@ -79,7 +78,11 @@ class Board {
                 newTiles[rowIndex] = row;
                 rowIndex++;
             } else if (l === 1) { // if l===1, move on
+                row[0].oldcolumn = row[0].column;
+                row[0].oldrow = row[0].row;
                 row[0].column = 1;
+                row[0].isNew = false;
+                row[0].justUpdated = false;
                 row.push(this.addTile());
                 row.push(this.addTile());
                 row.push(this.addTile());
@@ -88,15 +91,25 @@ class Board {
             } else { // if l>1
                 let deleteCount = 0;
                 for (let i = 0; i < l - 1; i++) {
+                    row[i].isNew = false;
+                    row[i + 1].isNew = false;
                     if ((row[i].value === row[i + 1].value) && row[i].toBeDeleted === false) {
                         //if this tile equals next tile, then
+                        row[i].oldcolumn = row[i].column;
+                        row[i].oldrow = row[i].row;
                         row[i].value = row[i].value * 2; 
+                        row[i].justUpdated = true;
                         this.score += row[i].value;
                         if (row[i].value === 2048) {
                             this.won = true;
                         }
                         row[i + 1].toBeDeleted = true;
-                        row[i + 1].value = 0;
+                        // row[i + 1].value = 0;
+                        row[i + 1].oldcolumn = row[i + 1].column;
+                        row[i + 1].oldrow = row[i + 1].row;
+                        row[i + 1].column = row[i].column;
+                        row[i + 1].row = row[i].row;
+                        row[i + 1].justUpdated = false;
                         deleteCount++;
                         i++;
                     } else {
@@ -125,8 +138,14 @@ class Board {
         }
     }
 
+    clearOldTiles(tiles) {
+        this.tiles = this.tiles.filter( tile => tile.toBeDeleted === false)
+                               .filter( tile => tile.value !== 0);
+    }
+
     move(direction) {
         //direction: 0left 1up 2right 3down
+        this.clearOldTiles();
         let newTiles = this.cells;
         this.hasLost = true;
         for (let rotateTimes = 0; rotateTimes < direction; rotateTimes++) {
@@ -182,6 +201,7 @@ class Tile {
         this.oldcolumn = column;
         this.isNew = true;
         this.toBeDeleted = false;
+        this.justUpdated = false;
     }
 }
 

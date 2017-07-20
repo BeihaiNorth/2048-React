@@ -13,6 +13,9 @@ class TileView extends React.Component {
 		if (this.props.isNew === true) {
 			classArray.push('new-tile');
 		}
+		if (this.props.justUpdated === true) {
+			classArray.push('upper-tile');
+		}
 		let classnames = classArray.join(' ');
 		return (
 			<div className={classnames}>
@@ -54,6 +57,9 @@ class BoardView extends React.Component {
 			let direction = event.keyCode - 37;
 			this.setState({board: this.state.board.move(direction)});
 		}
+		if(this.state.board.score > this.state.bestscore){
+			this.setState({bestscore: this.state.board.score});
+		}
 	}
 	componentDidMount(){
 		window.addEventListener('keydown', this.handleKeyDown.bind(this));
@@ -64,10 +70,12 @@ class BoardView extends React.Component {
 	render(){
 		let tiles = this.state.board.tiles
 					.filter(tile => tile.value !==0)
-					.map(tile => <TileView value={tile.value} key={tile.id} positionR={tile.row} positionC={tile.column} isNew={tile.isNew}/>);
-		if(this.state.board.score > this.state.bestscore){
-			this.setState({bestscore: this.state.board.score});
-		}
+					.map(tile => <TileView value={tile.value} 
+											key={tile.id} 
+											positionR={tile.row} 
+											positionC={tile.column} 
+											isNew={tile.isNew}
+											justUpdated={tile.justUpdated}/>);
 		return(
 			<div className='game'>
 				<ScoreView score={this.state.board.score} bestscore={this.state.bestscore}/>
