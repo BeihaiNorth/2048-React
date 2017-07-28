@@ -9,18 +9,13 @@ class Board {
             this.cells[i] = [this.addTile(), this.addTile(), this.addTile(), this.addTile()];
         }
         this.addNewRandomTile();
-        this.won = false; //get the first 2048
-        this.hasLost = false; // cannot move anymore
+        this.hasLost = false; // true when cannot move anymore
         this.score = 0;
-    }
-
-    hasWon() {
-        return this.won;
     }
 
     addTile() {
         let t = new Tile();
-        Tile.apply(t, arguments); //?????????
+        Tile.apply(t, arguments); 
         this.tiles.push(t);
         return t;
     }
@@ -66,9 +61,14 @@ class Board {
         return newArr;
     }
 
-    moveLeft(newTiles) {
+    //Return a array of 2 
+    //1st one is a 4*4 matrix, which is the moving outcome
+    //2nd one is a 4*4 matrix showing where the tiles to be deleted are moving to
+    moveLeft(matrix) {
         let rowIndex = 0;
-        for (let row of newTiles) { 
+        let newTiles = [[], [], [], []];
+        let toBeDeletedTiles = [[], [], [], []];
+        for (let row of matrix) { 
             //remove all tiles without value
             row = row.filter(tile => tile.value !== 0);
             let l = row.length;
@@ -100,16 +100,11 @@ class Board {
                         row[i].value = row[i].value * 2; 
                         row[i].justUpdated = true;
                         this.score += row[i].value;
-                        if (row[i].value === 2048) {
-                            this.won = true;
-                        }
                         row[i + 1].toBeDeleted = true;
-                        // row[i + 1].value = 0;
                         row[i + 1].oldcolumn = row[i + 1].column;
                         row[i + 1].oldrow = row[i + 1].row;
-                        row[i + 1].column = row[i].column;
-                        row[i + 1].row = row[i].row;
                         row[i + 1].justUpdated = false;
+                        toBeDeletedTiles[rowIndex][i - deleteCount] = row[i+1];
                         deleteCount++;
                         i++;
                     } else {
@@ -120,18 +115,27 @@ class Board {
                 for (let j = 0; j < this.size - l + deleteCount; j++) {
                     row.push(this.addTile());
                 }
+                for (let j = 0; j < this.size; j++) {
+                    toBeDeletedTiles[rowIndex][j] = toBeDeletedTiles[rowIndex][j] || this.addTile();
+                }
                 newTiles[rowIndex] = row;
                 rowIndex++;
             }
         }
-        return newTiles;
+        for (let i = 0; i < this.size; i++) {
+            for (let j = 0; j < this.size; j++){
+                toBeDeletedTiles[i][j] = toBeDeletedTiles[i][j] || this.addTile();    
+            }
+        }
+        console.log(toBeDeletedTiles);
+        return [newTiles, toBeDeletedTiles];
     }
 
-    updatePosition() {
-        for (let row of this.cells) {
+    updatePosition(matrix) {
+        for (let row of matrix) {
             for (let tile of row) {
                 if (tile.value !== 0) {
-                    tile.row = this.cells.indexOf(row) + 1;
+                    tile.row = matrix.indexOf(row) + 1;
                     tile.column = row.indexOf(tile) + 1;
                 }
             }
@@ -146,28 +150,34 @@ class Board {
     move(direction) {
         //direction: 0left 1up 2right 3down
         this.clearOldTiles();
-        let newTiles = this.cells;
         this.hasLost = true;
         for (let rotateTimes = 0; rotateTimes < direction; rotateTimes++) {
-            newTiles = this.rotateLeft(newTiles);
-            if (this.canMove(newTiles)) {
+            this.cells = this.rotateLeft(this.cells);
+            if (this.canMove(this.cells)) {
                 this.hasLost = false;
             }
         }
-        let cm = this.canMove(newTiles);
+        let cm = this.canMove(this.cells);
+        let toBeDeletedTiles; // this is to record tiles to be deleted. Record just for animation effect
         if (cm) {
-            newTiles = this.moveLeft(newTiles);
+            let moveOutcome = this.moveLeft(this.cells);
+            this.cells = moveOutcome[0];
+            toBeDeletedTiles = moveOutcome[1];
         }
         for (let rotateTimes2 = 0; rotateTimes2 < 4 - direction; rotateTimes2++) {
-            newTiles = this.rotateLeft(newTiles);
-            if (this.canMove(newTiles)) {
+            this.cells = this.rotateLeft(this.cells);
+            if (cm) {
+                toBeDeletedTiles = this.rotateLeft(toBeDeletedTiles);
+            }
+            if (this.canMove(this.cells)) {
                 this.hasLost = false;
             }
         }
-        this.cells = newTiles;
+        this.cells = this.cells;
         if (cm) {
             this.addNewRandomTile();
-            this.updatePosition();
+            this.updatePosition(this.cells);
+            this.updatePosition(toBeDeletedTiles);
         }
         return this;
     }
